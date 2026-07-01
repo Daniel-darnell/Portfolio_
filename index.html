@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Wanina — Product Owner & AI Product Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080D1A;
+  --bg2:#0D1528;
+  --bg3:#111D35;
+  --card:#0F1A2E;
+  --card2:#131F35;
+  --cyan:#00C8F8;
+  --cyan2:#00F0FF;
+  --purple:#7B61FF;
+  --purple2:#9D87FF;
+  --green:#00E5A0;
+  --amber:#F5A623;
+  --text:#E8EEFF;
+  --text2:#8892A4;
+  --text3:#4A5568;
+  --border:rgba(0,200,248,0.12);
+  --border2:rgba(255,255,255,0.06);
+  --glow:0 0 40px rgba(0,200,248,0.15);
+  --radius:12px;
+  --radius2:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.2}
+a{color:var(--cyan);text-decoration:none}
+a:hover{color:var(--cyan2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:var(--text);letter-spacing:-0.5px}
+.nav-logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text2);font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-cta{background:var(--cyan);color:#08111E;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;font-family:'Space Grotesk',sans-serif;transition:all 0.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--cyan2);color:#08111E;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,200,248,0.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-50px;width:400px;height:400px;background:radial-gradient(circle,rgba(123,97,255,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,200,248,0.08);border:1px solid rgba(0,200,248,0.2);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--cyan);font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:28px}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-name{font-size:clamp(42px,7vw,88px);font-weight:700;color:var(--text);letter-spacing:-2px;line-height:1.0;margin-bottom:16px}
+.hero-name span{color:var(--cyan)}
+.hero-typewriter{font-size:clamp(18px,2.5vw,26px);color:var(--text2);font-weight:400;margin-bottom:32px;min-height:40px;font-family:'Space Grotesk',sans-serif}
+.hero-typewriter .cursor{display:inline-block;width:2px;height:1.1em;background:var(--cyan);vertical-align:middle;margin-left:3px;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{font-size:17px;color:var(--text2);max-width:620px;line-height:1.8;margin-bottom:48px}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--cyan);color:#08111E;padding:14px 32px;border-radius:10px;font-weight:700;font-size:15px;font-family:'Space Grotesk',sans-serif;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--cyan2);color:#08111E;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,200,248,0.25)}
+.btn-secondary{background:transparent;color:var(--text);padding:14px 32px;border-radius:10px;font-weight:600;font-size:15px;font-family:'Space Grotesk',sans-serif;border:1px solid rgba(255,255,255,0.15);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;font-family:'JetBrains Mono',monospace}
+.hc-bar{display:flex;gap:6px;margin-bottom:20px}
+.hc-dot{width:11px;height:11px;border-radius:50%}
+.hc-dot:nth-child(1){background:#FF5F57}
+.hc-dot:nth-child(2){background:#FFBD2E}
+.hc-dot:nth-child(3){background:#28C840}
+.hc-title{font-size:11px;color:var(--text3);margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+.hc-line{font-size:12px;line-height:2;margin-bottom:2px}
+.hc-key{color:var(--purple2)}
+.hc-val{color:var(--cyan)}
+.hc-str{color:var(--green)}
+.hc-num{color:var(--amber)}
+.hc-comment{color:var(--text3)}
+.hc-divider{height:1px;background:var(--border2);margin:12px 0}
+
+/* STATS BAR */
+.stats-bar{background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:40px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.stat-item{text-align:center}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:13px;color:var(--text2);margin-top:6px;font-weight:500}
+
+/* SECTIONS */
+section{padding:100px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:12px;font-weight:600;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;margin-bottom:12px}
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--text);margin-bottom:16px;letter-spacing:-1px}
+.section-desc{font-size:16px;color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:56px}
+
+/* CASE STUDIES */
+.cs-grid{display:grid;gap:24px}
+.cs-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius2);overflow:hidden;transition:all 0.3s;cursor:pointer}
+.cs-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:var(--glow)}
+.cs-card.featured{border-color:rgba(0,200,248,0.25);background:linear-gradient(135deg,var(--card) 0%,rgba(0,200,248,0.03) 100%)}
+.cs-header{padding:32px 36px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.cs-tag{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.tag-flagship{background:rgba(0,200,248,0.12);color:var(--cyan);border:1px solid rgba(0,200,248,0.25)}
+.tag-delivery{background:rgba(123,97,255,0.12);color:var(--purple2);border:1px solid rgba(123,97,255,0.25)}
+.tag-automation{background:rgba(0,229,160,0.1);color:var(--green);border:1px solid rgba(0,229,160,0.2)}
+.tag-strategy{background:rgba(245,166,35,0.1);color:var(--amber);border:1px solid rgba(245,166,35,0.2)}
+.cs-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:8px;font-family:'Space Grotesk',sans-serif}
+.cs-sub{font-size:14px;color:var(--text2);line-height:1.6}
+.cs-metrics{display:flex;flex-direction:column;gap:10px;min-width:160px}
+.cs-metric{text-align:right}
+.cs-metric-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--cyan)}
+.cs-metric-label{font-size:11px;color:var(--text3);font-weight:500}
+.cs-body{padding:0 36px 32px;display:none}
+.cs-body.open{display:block}
+.cs-divider{height:1px;background:var(--border2);margin-bottom:24px}
+.cs-context{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.cs-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.cs-pill{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-size:12px;color:var(--text2);font-weight:500}
+.cs-outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.cs-outcome{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);padding:16px}
+.cs-outcome-val{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--cyan);line-height:1}
+.cs-outcome-label{font-size:12px;color:var(--text2);margin-top:4px}
+.cs-expand{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--cyan);font-weight:500;background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;transition:gap 0.2s}
+.cs-expand:hover{gap:10px}
+.cs-expand svg{transition:transform 0.3s}
+.cs-expand.open svg{transform:rotate(180deg)}
+
+/* AI SHOWCASE */
+#ai{background:var(--bg2)}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.ai-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius2);padding:28px;transition:all 0.3s;position:relative;overflow:hidden}
+.ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));opacity:0;transition:opacity 0.3s}
+.ai-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:var(--glow)}
+.ai-card:hover::before{opacity:1}
+.ai-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.ai-icon-cyan{background:rgba(0,200,248,0.1)}
+.ai-icon-purple{background:rgba(123,97,255,0.1)}
+.ai-icon-green{background:rgba(0,229,160,0.1)}
+.ai-icon-amber{background:rgba(245,166,35,0.1)}
+.ai-card h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;font-family:'Space Grotesk',sans-serif}
+.ai-card p{font-size:13px;color:var(--text2);line-height:1.7}
+.ai-badge{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;font-family:'Space Grotesk',sans-serif}
+.badge-live{background:rgba(0,229,160,0.1);color:var(--green);border:1px solid rgba(0,229,160,0.2)}
+.badge-shipped{background:rgba(0,200,248,0.1);color:var(--cyan);border:1px solid rgba(0,200,248,0.2)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.skill-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius2);padding:28px}
+.skill-card h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:20px;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:10px}
+.skill-icon{font-size:18px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:5px 12px;font-size:12px;color:var(--text2);font-weight:500;transition:all 0.2s}
+.skill-tag:hover{border-color:rgba(0,200,248,0.3);color:var(--cyan)}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg2)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.test-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius2);padding:32px;position:relative}
+.test-card::before{content:'\201C';position:absolute;top:20px;right:28px;font-size:80px;color:rgba(0,200,248,0.08);font-family:'Space Grotesk',sans-serif;line-height:1}
+.test-body{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:24px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#08111E;font-family:'Space Grotesk',sans-serif;flex-shrink:0}
+.test-name{font-size:14px;font-weight:600;color:var(--text);font-family:'Space Grotesk',sans-serif}
+.test-role{font-size:12px;color:var(--text3)}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-inner{max-width:700px;margin:0 auto;text-align:center}
+.contact-title{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-1.5px;margin-bottom:16px}
+.contact-title span{color:var(--cyan)}
+.contact-desc{font-size:17px;color:var(--text2);line-height:1.8;margin-bottom:48px}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:56px}
+.contact-link{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:14px 24px;color:var(--text2);font-size:14px;font-weight:500;transition:all 0.3s}
+.contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.contact-link-icon{font-size:18px}
+.contact-availability{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.15);border-radius:999px;padding:10px 24px;font-size:14px;color:var(--green);font-weight:500}
+.contact-availability::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border2);padding:32px 5%;text-align:center}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text);font-size:16px}
+.footer-logo span{color:var(--cyan)}
+.footer-copy{font-size:13px;color:var(--text3)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--text3);transition:color 0.2s}
+.footer-links a:hover{color:var(--cyan)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .cs-header{grid-template-columns:1fr}
+  .cs-metrics{flex-direction:row;justify-content:flex-start}
+  .cs-metric{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <div class="nav-logo">DW<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#ai">AI Features</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#testimonials">References</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#resume" class="nav-cta">Download CV</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Available for new opportunities</div>
+        <h1 class="hero-name">Daniel<br><span>Wanina</span></h1>
+        <div class="hero-typewriter"><span id="typewriter"></span><span class="cursor"></span></div>
+        <p class="hero-desc">
+          Building <strong>AI-powered InsurTech platforms</strong> across East and West Africa.
+          3+ years owning product from BA intern to Product Owner —
+          shipping <strong>10 AI agents</strong>, serving <strong>5 enterprise clients</strong>
+          across <strong>4 markets</strong>.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View case studies ↓</a>
+          <a href="#contact" class="btn-secondary">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hc-bar"><div class="hc-dot"></div><div class="hc-dot"></div><div class="hc-dot"></div></div>
+        <div class="hc-title">// daniel_wanina.json</div>
+        <div class="hc-line"><span class="hc-key">"role"</span>: <span class="hc-str">"Product Owner"</span>,</div>
+        <div class="hc-line"><span class="hc-key">"location"</span>: <span class="hc-str">"Nairobi, Kenya"</span>,</div>
+        <div class="hc-line"><span class="hc-key">"available"</span>: <span class="hc-val">true</span>,</div>
+        <div class="hc-line"><span class="hc-key">"remote"</span>: <span class="hc-val">true</span>,</div>
+        <div class="hc-divider"></div>
+        <div class="hc-line"><span class="hc-key">"markets"</span>: [<span class="hc-str">"KE"</span>, <span class="hc-str">"UG"</span>, <span class="hc-str">"NG"</span>, <span class="hc-str">"RW"</span>],</div>
+        <div class="hc-line"><span class="hc-key">"ai_agents"</span>: <span class="hc-num">10</span>,</div>
+        <div class="hc-line"><span class="hc-key">"clients"</span>: <span class="hc-num">5</span>,</div>
+        <div class="hc-line"><span class="hc-key">"delivery_rate"</span>: <span class="hc-str">"90%+"</span>,</div>
+        <div class="hc-divider"></div>
+        <div class="hc-line"><span class="hc-comment">// stack</span></div>
+        <div class="hc-line"><span class="hc-key">"domain"</span>: <span class="hc-str">"InsurTech SaaS"</span>,</div>
+        <div class="hc-line"><span class="hc-key">"platform"</span>: <span class="hc-str">"Caava Evolve v2.0"</span>,</div>
+        <div class="hc-line"><span class="hc-key">"type"</span>: <span class="hc-str">"multi-tenant API-first"</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar" aria-label="Key metrics">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">10</div>
+      <div class="stat-label">AI agents shipped &amp; in production</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Enterprise InsurTech clients</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">90%+</div>
+      <div class="stat-label">On-time roadmap delivery rate</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">4</div>
+      <div class="stat-label">African markets (KE, UG, NG, RW)</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDIES -->
+<section id="work" aria-label="Case studies">
+  <div class="section-inner">
+    <div class="section-eyebrow">Case studies</div>
+    <h2 class="section-title">Product work that ships</h2>
+    <p class="section-desc">Seven enterprise engagements across insurance, AI, and platform delivery — each one a different product challenge.</p>
+
+    <div class="cs-grid">
+
+      <!-- CS 1: CAAVA EVOLVE -->
+      <div class="cs-card featured reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-flagship">Flagship platform</div>
+            <h3 class="cs-title">Caava Evolve Digital Channels Portal v2.0</h3>
+            <p class="cs-sub">Multi-tenant, API-first, mobile-first InsurTech SaaS — 3 personas, 8 product classes, 4 regulated markets</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">90%+</div><div class="cs-metric-label">Roadmap delivery</div></div>
+            <div class="cs-metric"><div class="cs-metric-num">10</div><div class="cs-metric-label">AI agents live</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">
+            Read case study
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Caava Group needed to replace a fragmented set of legacy V4 client portals with a single, configurable, AI-enhanced digital insurance platform capable of serving multiple insurance companies across multiple markets without custom engineering for each client.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Product Owner — owned the full product vision, roadmap, backlog (60+ stories/sprint), stakeholder management at CPO and CGIO level, and end-to-end delivery governance across a cross-functional team of 7.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Approach:</strong> Established API-first architecture guardrail (portal = distribution layer only, all logic in Core APIs). Designed multi-tenant config model enabling zero-code onboarding. Defined and shipped 10 AI agents with a phased governance framework and CPO/CGIO approval gates. Produced a single-file browser-openable prototype (v6: 30+ pages, 22 modals) as the primary stakeholder artefact.</p>
+          <div class="cs-pills">
+            <span class="cs-pill">Multi-tenant SaaS</span><span class="cs-pill">API-first</span><span class="cs-pill">Agentic AI</span><span class="cs-pill">Generative AI</span><span class="cs-pill">RAG</span><span class="cs-pill">OCR</span><span class="cs-pill">LLM</span><span class="cs-pill">WSJF</span><span class="cs-pill">MoSCoW</span><span class="cs-pill">PRD authorship</span><span class="cs-pill">AI governance</span>
+          </div>
+          <div class="cs-outcomes">
+            <div class="cs-outcome"><div class="cs-outcome-val">90%+</div><div class="cs-outcome-label">Roadmap delivery rate</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">85%+</div><div class="cs-outcome-label">Epic completion per sprint</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">&lt;3</div><div class="cs-outcome-label">Post-release defects per module</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">50%</div><div class="cs-outcome-label">Reduction in tenant setup time</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">90%+</div><div class="cs-outcome-label">AI feature adoption in 60 days</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">5+</div><div class="cs-outcome-label">Zero-downtime deployments</div></div>
+          </div>
+          <p class="cs-context" style="font-size:13px"><strong style="color:var(--text)">Clients served:</strong> Britam Uganda, APA General Insurance, Heritage Insurance, Star Discovery Insurance, Mutual Benefit Nigeria</p>
+        </div>
+      </div>
+
+      <!-- CS 2: BRITAM UGANDA -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-delivery">Platform delivery</div>
+            <h3 class="cs-title">Britam Uganda — Agent &amp; Client Portal</h3>
+            <p class="cs-sub">End-to-end delivery of Agent and Client self-service portals across Motor, Travel, PA, and Domestic modules</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">150+</div><div class="cs-metric-label">Users trained</div></div>
+            <div class="cs-metric"><div class="cs-metric-num">50%</div><div class="cs-metric-label">Faster onboarding</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Britam Uganda needed digital self-service portals for both agents and clients to replace manual, phone-based policy initiation and renewal processes. Multiple insurance product classes required simultaneous delivery within a fixed timeline.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Lead BA and Delivery — translated Britam SRS/BRD requirements into user stories and acceptance criteria, coordinated UAT, delivered end-user training, and managed stakeholder communication throughout.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> On-time delivery across Motor, Travel, Personal Accident, and Domestic Package modules. 150+ agents and clients trained with structured onboarding programmes, achieving 50% improvement in onboarding efficiency.</p>
+          <div class="cs-pills"><span class="cs-pill">BRD/SRS translation</span><span class="cs-pill">UAT</span><span class="cs-pill">Change management</span><span class="cs-pill">User training</span><span class="cs-pill">Motor</span><span class="cs-pill">Travel</span><span class="cs-pill">PA</span><span class="cs-pill">Domestic</span></div>
+          <div class="cs-outcomes">
+            <div class="cs-outcome"><div class="cs-outcome-val">150+</div><div class="cs-outcome-label">End users trained</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">50%</div><div class="cs-outcome-label">Onboarding efficiency gain</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">4</div><div class="cs-outcome-label">Modules delivered on time</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 3: BRITAM AIMS CORE -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-delivery">System integration</div>
+            <h3 class="cs-title">Britam Uganda — AIMS Core System Integration</h3>
+            <p class="cs-sub">API integration between Caava Evolve portal and Britam's AIMS core insurance system via NITA Uganda data standards</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">API</div><div class="cs-metric-label">First integration</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Britam Uganda required their Caava Evolve portal to integrate with their AIMS core insurance system, following Uganda's NITA API data standards — a technically complex integration requiring precise requirements documentation and cross-team coordination between Caava engineering and Britam ICT.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Owned requirements definition and handoff for the BFF (Backend-for-Frontend) API layer connecting the portal to AIMS. Coordinated NITA API documentation review, defined integration acceptance criteria, and managed stakeholder alignment between Caava (Eugene, engineering) and Britam Uganda teams.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> Integration requirements documented and handed off. AIMS integration block surfaced as a Phase 2 dependency; escalated and tracked through programme risk register with CPO visibility.</p>
+          <div class="cs-pills"><span class="cs-pill">API integration design</span><span class="cs-pill">NITA standards</span><span class="cs-pill">BFF layer</span><span class="cs-pill">Cross-team coordination</span><span class="cs-pill">Risk management</span><span class="cs-pill">Requirements handoff</span></div>
+        </div>
+      </div>
+
+      <!-- CS 4: MUTUAL BENEFIT -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-automation">Workflow automation</div>
+            <h3 class="cs-title">Mutual Benefit Insurance Nigeria — Process Automation</h3>
+            <p class="cs-sub">Oracle TurnQuest workflow optimisation eliminating manual processing across core business functions</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">40%</div><div class="cs-metric-label">More automation</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Mutual Benefit Insurance (Nigeria) had significant manual processing effort in core insurance workflows running on Oracle TurnQuest. High manual effort was creating SLA risk and operational inefficiency.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Business Analyst — mapped existing workflows using BPMN, identified automation opportunities, defined requirements for Oracle-based workflow optimisation, and validated the implemented changes against acceptance criteria.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> 40% increase in process automation coverage across 2 core business functions, with measurable reduction in manual effort and improved SLA performance.</p>
+          <div class="cs-pills"><span class="cs-pill">BPMN process modelling</span><span class="cs-pill">Oracle TurnQuest</span><span class="cs-pill">Workflow automation</span><span class="cs-pill">Gap analysis</span><span class="cs-pill">Nigeria market</span></div>
+          <div class="cs-outcomes">
+            <div class="cs-outcome"><div class="cs-outcome-val">40%</div><div class="cs-outcome-label">Process automation increase</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">2</div><div class="cs-outcome-label">Core functions automated</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 5: HERITAGE AML/KYC -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-strategy">Strategic decision</div>
+            <h3 class="cs-title">Heritage Insurance — AML/KYC Platform Decision</h3>
+            <p class="cs-sub">Navigating a strategic platform architecture decision under information asymmetry and Phase 1 delivery guardrails</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">CPO</div><div class="cs-metric-label">Escalation owned</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Heritage Insurance (currently on TurnQuest V4, ePay module only) initiated a request via their ICT lead to build AML/KYC functionality. The request, if fulfilled on V4, would violate the programme's Phase 1 guardrail — no new V4 PL/SQL dependencies — and pre-empt the v2.0 upgrade path. Heritage was unaware of the v2.0 programme, creating information asymmetry.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Identified the strategic conflict, preserved information asymmetry appropriately, structured the decision options (build on V4 vs. defer to v2.0 upgrade vs. third-party KYC API), and escalated to CPO and CGIO with a documented recommendation before any client commitment was made.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> Escalation framework preserved programme integrity, prevented a technical debt commitment, and set the foundation for a structured Heritage v2.0 upgrade conversation. Smile ID recommended as KYC provider for Phase 1 multi-market coverage.</p>
+          <div class="cs-pills"><span class="cs-pill">Strategic escalation</span><span class="cs-pill">Architecture guardrails</span><span class="cs-pill">Stakeholder management</span><span class="cs-pill">Risk mitigation</span><span class="cs-pill">AML/KYC</span><span class="cs-pill">CPO/CGIO alignment</span></div>
+        </div>
+      </div>
+
+      <!-- CS 6: STAR DISCOVERY -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-delivery">Module rollout</div>
+            <h3 class="cs-title">Star Discovery Insurance — Module Delivery</h3>
+            <p class="cs-sub">Motor and Personal Accident module rollout with end-to-end BA, UAT, and user adoption delivery</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">90%+</div><div class="cs-metric-label">User adoption</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> Star Discovery Insurance required Motor and Personal Accident modules configured and delivered on TurnQuest, with staff trained and adoption achieved within the contracted timeline.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> End-to-end BA — requirements gathering, user story authoring, UAT test script execution, defect management, training material development, and structured user adoption programme delivery.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> On-time delivery, 90%+ user adoption rate post-training, and zero critical defects at go-live. Documentation handed off to client for ongoing reference.</p>
+          <div class="cs-pills"><span class="cs-pill">Requirements elicitation</span><span class="cs-pill">UAT</span><span class="cs-pill">Training delivery</span><span class="cs-pill">TurnQuest</span><span class="cs-pill">Motor insurance</span><span class="cs-pill">PA module</span></div>
+          <div class="cs-outcomes">
+            <div class="cs-outcome"><div class="cs-outcome-val">90%+</div><div class="cs-outcome-label">User adoption rate</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">0</div><div class="cs-outcome-label">Critical defects at go-live</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 7: APA GENERAL -->
+      <div class="cs-card reveal" onclick="toggleCS(this)">
+        <div class="cs-header">
+          <div>
+            <div class="cs-tag tag-automation">Support &amp; SLA</div>
+            <h3 class="cs-title">APA General Insurance — L2/L3 Support &amp; SLA Management</h3>
+            <p class="cs-sub">Production support, incident resolution, and SLA governance for a high-volume enterprise insurance platform</p>
+          </div>
+          <div class="cs-metrics">
+            <div class="cs-metric"><div class="cs-metric-num">35%</div><div class="cs-metric-label">Faster resolution</div></div>
+            <div class="cs-metric"><div class="cs-metric-num">90%+</div><div class="cs-metric-label">SLA compliance</div></div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;display:flex;align-items:center;justify-content:space-between">
+          <button class="cs-expand" aria-expanded="false">Read case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-divider"></div>
+          <p class="cs-context"><strong style="color:var(--text)">Challenge:</strong> APA General Insurance required consistent, high-quality L2 and L3 production support with strict SLA compliance across a live enterprise insurance platform processing active policies, payments, and claims.</p>
+          <p class="cs-context"><strong style="color:var(--text)">My role:</strong> Lead support BA — triaged and resolved production incidents using SQL and log analysis, maintained accurate documentation of all interactions and resolutions, escalated complex issues to L3 engineering, and reported SLA performance to stakeholders.</p>
+          <p class="cs-context"><strong style="color:var(--text)">Outcome:</strong> 35% reduction in average defect resolution time, 90%+ SLA compliance maintained throughout, and recurring bug rate kept at or below 5% — all feeding directly into sprint planning as production insights.</p>
+          <div class="cs-pills"><span class="cs-pill">L2/L3 incident management</span><span class="cs-pill">SQL analysis</span><span class="cs-pill">Log analysis</span><span class="cs-pill">SLA governance</span><span class="cs-pill">TurnQuest V4</span><span class="cs-pill">Defect management</span></div>
+          <div class="cs-outcomes">
+            <div class="cs-outcome"><div class="cs-outcome-val">35%</div><div class="cs-outcome-label">Faster defect resolution</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">90%+</div><div class="cs-outcome-label">SLA compliance rate</div></div>
+            <div class="cs-outcome"><div class="cs-outcome-val">≤5%</div><div class="cs-outcome-label">Recurring bug rate</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI SHOWCASE -->
+<section id="ai" aria-label="AI features">
+  <div class="section-inner">
+    <div class="section-eyebrow">AI product delivery</div>
+    <h2 class="section-title">10 AI agents. In production.</h2>
+    <p class="section-desc">Defined, shipped, and monitored across 4 regulated markets. Each one governed, phased, and adoption-tracked.</p>
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-cyan">🤖</div>
+        <h3>Conversational AI Agent</h3>
+        <p>LLM-powered chatbot embedded across Agent and Staff portals. Handles policy queries, renewal guidance, and workflow navigation in natural language.</p>
+        <span class="ai-badge badge-live">Live in production</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-purple">📄</div>
+        <h3>OCR Document Scan Agent</h3>
+        <p>AI-powered logbook and KYC document extraction. Scans uploaded images, auto-populates vehicle and client fields, and flags exceptions for review.</p>
+        <span class="ai-badge badge-live">Live in production</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-green">📚</div>
+        <h3>RAG-Based Policy FAQ Agent</h3>
+        <p>Retrieval-Augmented Generation FAQ powered by tenant-specific policy documents. Returns grounded answers with 48-hour content review SLA governance.</p>
+        <span class="ai-badge badge-live">Live in production</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-cyan">⚡</div>
+        <h3>LLM Cover Recommendation Engine</h3>
+        <p>Analyses client risk profile, vehicle data, and product history to recommend optimal cover plan with confidence scoring and reasoning shown to the agent.</p>
+        <span class="ai-badge badge-live">Live in production</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-amber">📊</div>
+        <h3>AI Insights Personalisation Strip</h3>
+        <p>Persona-specific AI insight cards on every dashboard — renewal predictions, claims risk flags, commission opportunities, and portfolio alerts per user role.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-purple">✍️</div>
+        <h3>AI Draft Comms</h3>
+        <p>Generative AI tool for staff to draft client communications — renewal notices, claim updates, endorsement letters — with tone and compliance controls per market.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-cyan">💬</div>
+        <h3>NL Quoting Agent</h3>
+        <p>Natural language quoting flow — agents describe a risk in plain text, the agent extracts structured fields, validates against GIB rating engine, and returns a premium.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-green">🔍</div>
+        <h3>AI Plate Scan Agent</h3>
+        <p>Camera-based number plate recognition triggering IRA/DMVIC registry lookup to auto-populate vehicle data fields at quote initiation.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-purple">📋</div>
+        <h3>Policy Explainer Agent</h3>
+        <p>Client-facing AI that translates policy schedule language into plain-English summaries — what is covered, what is excluded, and what to do at claim time.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+      <div class="ai-card reveal">
+        <div class="ai-icon ai-icon-amber">⚙️</div>
+        <h3>Smart Quick Actions</h3>
+        <p>AI-personalised quick action panel on each dashboard, dynamically reordered based on usage patterns, time of day, and role-specific workflow priorities.</p>
+        <span class="ai-badge badge-shipped">Shipped</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-label="Skills">
+  <div class="section-inner">
+    <div class="section-eyebrow">Skills</div>
+    <h2 class="section-title">The full stack of a modern PO</h2>
+    <p class="section-desc">From backlog to boardroom. From BPMN to AI governance frameworks.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">🤖</span> AI Product Management</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Agentic AI</span><span class="skill-tag">Generative AI</span><span class="skill-tag">LLM products</span><span class="skill-tag">RAG</span><span class="skill-tag">OCR</span><span class="skill-tag">AI governance</span><span class="skill-tag">Model drift</span><span class="skill-tag">Eval frameworks</span><span class="skill-tag">Production monitoring</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">📦</span> Product Ownership</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Backlog management</span><span class="skill-tag">Sprint planning</span><span class="skill-tag">INVEST</span><span class="skill-tag">WSJF</span><span class="skill-tag">MoSCoW</span><span class="skill-tag">OKRs</span><span class="skill-tag">Roadmapping</span><span class="skill-tag">Release planning</span><span class="skill-tag">PRD authorship</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">📐</span> Business Analysis</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Requirements engineering</span><span class="skill-tag">BRD / SRS</span><span class="skill-tag">BPMN</span><span class="skill-tag">Gap analysis</span><span class="skill-tag">UAT</span><span class="skill-tag">Acceptance criteria</span><span class="skill-tag">Incident management</span><span class="skill-tag">TurnQuest</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">🔗</span> Platform &amp; Architecture</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">API-first design</span><span class="skill-tag">Multi-tenant SaaS</span><span class="skill-tag">Mobile-first</span><span class="skill-tag">REST APIs</span><span class="skill-tag">CI/CD alignment</span><span class="skill-tag">Cloud + on-prem</span><span class="skill-tag">BFF pattern</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">🛠</span> Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">Postman</span><span class="skill-tag">SQL</span><span class="skill-tag">Oracle</span><span class="skill-tag">Figma</span><span class="skill-tag">GitHub</span><span class="skill-tag">Zendesk</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="skill-icon">🌍</span> Markets &amp; Domain</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">InsurTech</span><span class="skill-tag">Kenya</span><span class="skill-tag">Uganda</span><span class="skill-tag">Nigeria</span><span class="skill-tag">Rwanda</span><span class="skill-tag">Motor</span><span class="skill-tag">Travel</span><span class="skill-tag">Medical</span><span class="skill-tag">Life</span><span class="skill-tag">Regulatory nav</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" aria-label="Testimonials">
+  <div class="section-inner">
+    <div class="section-eyebrow">References</div>
+    <h2 class="section-title">What colleagues say</h2>
+    <p class="section-desc">Placeholder testimonials — replace with real LinkedIn recommendations or written references before publishing.</p>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <p class="test-body">"Daniel brought genuine product thinking to a role that most BAs treat as ticket management. He owns the problem, not just the task — and his ability to hold technical complexity alongside stakeholder clarity is rare at this level."</p>
+        <div class="test-author">
+          <div class="test-avatar">WA</div>
+          <div>
+            <div class="test-name">Warlys Aduvaga</div>
+            <div class="test-role">CPO, Caava Group</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal">
+        <p class="test-body">"Daniel trained our entire agent team on the portal. His documentation was clear, his sessions were practical, and adoption was almost immediate. That's not just delivery — that's change management done right."</p>
+        <div class="test-author">
+          <div class="test-avatar">KK</div>
+          <div>
+            <div class="test-name">Karl Kiconco</div>
+            <div class="test-role">Britam Insurance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow" style="text-align:center">Get in touch</div>
+    <h2 class="contact-title">Let's build something<br><span>worth shipping</span></h2>
+    <p class="contact-desc">Open to Senior Product Owner and Product Manager roles at InsurTech, FinTech, or SaaS companies — remote or pan-Africa. Also available for advisory and consulting engagements.</p>
+    <div class="contact-links">
+      <a href="mailto:waninadaniel@gmail.com" class="contact-link"><span class="contact-link-icon">✉</span> waninadaniel@gmail.com</a>
+      <a href="https://linkedin.com/in/daniel-wanina" class="contact-link" target="_blank" rel="noopener"><span class="contact-link-icon">in</span> linkedin.com/in/daniel-wanina</a>
+      <a href="https://daniel-darnell.github.io/Product_Portfolio" class="contact-link" target="_blank" rel="noopener"><span class="contact-link-icon">🔗</span> Live portfolio</a>
+    </div>
+    <div id="resume" style="margin-bottom:32px">
+      <a href="Daniel_Wanina_Resume_v6_Final.docx" download class="btn-primary" style="display:inline-flex">
+        ⬇ Download CV
+      </a>
+    </div>
+    <div class="contact-availability">Available for new roles — Nairobi, remote, pan-Africa</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">DW<span>.</span></div>
+    <div class="footer-copy">© 2026 Daniel Wanina. Built with intention.</div>
+    <div class="footer-links">
+      <a href="#work">Work</a>
+      <a href="#ai">AI</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Typewriter
+const titles = [
+  "Product Owner, Digital Channels",
+  "AI Product Leader",
+  "InsurTech SaaS Builder",
+  "Multi-Market Platform Owner",
+  "Business Analyst turned PO"
+];
+let ti = 0, ci = 0, deleting = false;
+const el = document.getElementById('typewriter');
+function type() {
+  const current = titles[ti];
+  if (!deleting) {
+    el.textContent = current.slice(0, ++ci);
+    if (ci === current.length) { deleting = true; setTimeout(type, 2000); return; }
+  } else {
+    el.textContent = current.slice(0, --ci);
+    if (ci === 0) { deleting = false; ti = (ti + 1) % titles.length; }
+  }
+  setTimeout(type, deleting ? 40 : 75);
+}
+type();
+
+// Case study expand
+function toggleCS(card) {
+  const body = card.querySelector('.cs-body');
+  const btn = card.querySelector('.cs-expand');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.cs-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.cs-expand.open').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+  if (!isOpen) {
+    body.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
