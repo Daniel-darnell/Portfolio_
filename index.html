@@ -99,9 +99,28 @@ section{padding-block:72px}
 .case dl{display:grid;gap:10px;margin:0}
 .case dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .case dd{margin:2px 0 0;font-size:15.5px}
+.case dt.v{color:var(--accent)}
+.case .value{border-left:2px solid var(--accent);padding-left:12px}
 .case .metric{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);display:flex;gap:22px;flex-wrap:wrap}
 .case .metric b{font-family:var(--mono);font-weight:500;font-size:22px;font-variant-numeric:tabular-nums;display:block}
 .case .metric span{font-size:13px;color:var(--muted)}
+
+/* lifecycle */
+.cycle{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.step{padding:22px 20px;border-left:1px solid var(--line);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
+.step:nth-child(4n+1){border-left:0}
+.step:nth-child(-n+4){border-top:0}
+.step-top{display:flex;align-items:baseline;gap:10px}
+.step-no{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-variant-numeric:tabular-nums}
+.step h3{font-size:18px;line-height:1.2}
+.step .gets{font-size:15px}
+.step ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;margin-top:auto}
+.step li{font-size:13.5px;color:var(--muted);display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:baseline}
+.step li b{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.step li b.l{color:var(--ok);background:var(--ok-bg)}
+.step li b.n{color:var(--build);background:var(--build-bg)}
+.step li b.p{color:var(--pilot);background:var(--pilot-bg)}
+.step li b.was{color:var(--muted);background:var(--surface-2)}
 
 /* judgment + approach */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
@@ -155,6 +174,10 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
   .hero,.split,.career,.contact{grid-template-columns:minmax(0,1fr)}
   .rails{justify-self:start;max-width:320px}
   .work{grid-template-columns:minmax(0,1fr)}
+  .cycle{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step:nth-child(n){border-left:1px solid var(--line);border-top:1px solid var(--line)}
+  .step:nth-child(2n+1){border-left:0}
+  .step:nth-child(-n+2){border-top:0}
   .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ledger{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ledger div:nth-child(3){border-left:0}
@@ -164,12 +187,15 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
 @media (max-width:520px){
   .nav ul{display:none}
   .skills{grid-template-columns:minmax(0,1fr)}
+  .cycle{grid-template-columns:minmax(0,1fr)}
+  .step:nth-child(n){border-left:0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:0}
   .case,.contact{padding:22px}
   .hero{padding-block:48px 40px}
 }
 </style>
 <meta property="og:title" content="Daniel Wanina | Platform Product Owner">
-<meta property="og:description" content="Insurance and payments platforms for African markets.">
+<meta property="og:description" content="Platform Product Owner building insurance and payments platforms for African insurers, covering the full policy lifecycle from launch and quoting to payments, compliance, claims and renewals.">
 <meta property="og:type" content="website">
 <style>html{scroll-behavior:smooth}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
 </head>
@@ -178,6 +204,7 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
   <nav class="wrap nav" aria-label="Main">
     <a class="mark" href="#top">DW<span>.</span></a>
     <ul>
+      <li><a href="#platform">Platform</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="#career">Career</a></li>
@@ -230,6 +257,80 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
     <div><b>4</b><span>regulated markets</span></div>
   </div>
 
+  <section id="platform">
+    <div class="sec-head">
+      <p class="label">What insurers get</p>
+      <h2>The whole policy lifecycle, not just payments</h2>
+      <p>Insurers run every step from launch to renewal on one platform. Each step shows what is live for insurers today and what comes next in Caava Evolve.</p>
+    </div>
+    <div class="cycle">
+      <article class="step">
+        <div class="step-top"><span class="step-no">01</span><h3>Launch an insurer</h3></div>
+        <p class="gets">A new insurer goes live through configuration, with no client-specific code.</p>
+        <ul>
+          <li><b class="was">Before</b><span>Each new insurer meant a custom build.</span></li>
+          <li><b class="l">Delivered</b><span>Branding, five languages, KYC fields and AI persona set per tenant. Set-up time halved.</span></li>
+          <li><b class="n">Next</b><span>A Studio copilot that helps admins set up products, workflows and reports in plain language.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">02</span><h3>Quote</h3></div>
+        <p class="gets">Agents and customers price cover themselves, any time.</p>
+        <ul>
+          <li><b class="l">Live</b><span>Quick quotes online. An A/B-tested quote layout raised completion 10–25%.</span></li>
+          <li><b class="n">Next</b><span>A three-step quote journey with payment gated on KYC, and an agent copilot that helps with quoting.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">03</span><h3>Buy and verify</h3></div>
+        <p class="gets">Customers buy cover online from quote to policy.</p>
+        <ul>
+          <li><b class="l">Live</b><span>End-to-end online purchase on the customer portal.</span></li>
+          <li><b class="p">Pilot</b><span>AI document scanning to speed up KYC checks.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">04</span><h3>Pay</h3></div>
+        <p class="gets">Premium is collected on the rails customers already use and posted automatically.</p>
+        <ul>
+          <li><b class="was">Before</b><span>The portal supported one payment rail.</span></li>
+          <li><b class="l">Live</b><span>Six mobile-money and bank rails, up to four per insurer, 10K+ payments a month at 96% success, posted to core and finance.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">05</span><h3>Sell through agents</h3></div>
+        <p class="gets">Agents can write business before the premium is in hand.</p>
+        <ul>
+          <li><b class="was">Before</b><span>Agents paid premium in full before a policy issued.</span></li>
+          <li><b class="l">Live</b><span>Credit against insurer-set limits for 10,000+ agents, plus commission rules, statements and payouts.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">06</span><h3>Stay compliant</h3></div>
+        <p class="gets">Regulatory steps run inside the policy flow, not as a separate job.</p>
+        <ul>
+          <li><b class="l">Live</b><span>Kenya's IRA Marine Cargo flow across IRA, KRA iCMS and eCitizen, and the NAICOM integration in Nigeria.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">07</span><h3>Service and claim</h3></div>
+        <p class="gets">Policyholders handle changes and claims without calling or visiting a branch.</p>
+        <ul>
+          <li><b class="l">Live</b><span>Endorsements, documents, service requests, and claim notification and tracking online.</span></li>
+          <li><b class="n">Next</b><span>A client assistant for policy questions and plain-language claim status, and a staff copilot that ranks and summarises claims queues.</span></li>
+        </ul>
+      </article>
+      <article class="step">
+        <div class="step-top"><span class="step-no">08</span><h3>Renew</h3></div>
+        <p class="gets">Customers renew on their own, which keeps them on the books.</p>
+        <ul>
+          <li><b class="l">Live</b><span>Online renewals on the customer portal.</span></li>
+          <li><b class="n">Next</b><span>Personalised renewal and payment reminders.</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
   <section id="work">
     <div class="sec-head">
       <p class="label">Selected work</p>
@@ -248,6 +349,7 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
         <dl>
           <div><dt>Problem</dt><dd>Insurers in four markets needed customers and agents to pay through the mobile-money and bank rails they already use, with every payment landing correctly in core and finance systems.</dd></div>
           <div><dt>What I did</dt><dd>Led integrations across M-Pesa, MTN Mobile Money, Airtel Money, PesaLink, PesaPay and Paystack, with webhook confirmation, cross-vendor reconciliation and automated dual posting to the core insurance and finance systems.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>The portal used to support one payment rail. Insurers can now offer several, with some running up to four, so customers pay the way they prefer and every confirmed payment lands in core and finance without re-keying.</dd></div>
         </dl>
         <div class="metric"><div><b>10K+</b><span>transactions a month</span></div><div><b>96%</b><span>success rate</span></div></div>
       </article>
@@ -256,8 +358,9 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
         <div class="case-top"><span class="area">Fintech · Intermediaries</span><span class="status s-ok">Live</span></div>
         <h3>Agent credit-transacting</h3>
         <dl>
-          <div><dt>Problem</dt><dd>Agents could only transact with cash up front, which slowed down sales.</dd></div>
+          <div><dt>Problem</dt><dd>Agents had to pay premium in full before a policy could issue.</dd></div>
           <div><dt>What I did</dt><dd>Built credit-transacting against insurer-set limits, covering limit approval, utilisation, repayment and arrears rules. Piloted it before the full rollout.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>Agents write business before the premium is in hand, within limits the insurer sets, so agent sales grow without unmanaged credit risk.</dd></div>
         </dl>
         <div class="metric"><div><b>10,000+</b><span>agents with access</span></div><div><b>6,000</b><span>credit-approved</span></div><div><b>10–25%</b><span>rise in agent transactions</span></div></div>
       </article>
@@ -268,6 +371,7 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
         <dl>
           <div><dt>Problem</dt><dd>The next-generation portal platform started as a one-page brief and had to satisfy a demanding enterprise RFP before any build money was spent.</dd></div>
           <div><dt>What I did</dt><dd>Wrote the vision suite and PRD, built a clickable prototype myself with Claude Code, and ran two rounds of testing against real customer-service and claims scenarios. Development began in September 2026.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>Insurers tested the portal against their own RFP scenarios before paying for the build, which cut the risk of building the wrong thing.</dd></div>
         </dl>
         <div class="metric"><div><b>70 / 73</b><span>RFP requirements covered</span></div><div><b>96%</b><span>coverage before build</span></div></div>
       </article>
@@ -278,6 +382,7 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
         <dl>
           <div><dt>Problem</dt><dd>Every new insurer meant client-specific code for branding, languages and KYC rules.</dd></div>
           <div><dt>What I did</dt><dd>Designed a tenant-isolated configuration model covering branding, five languages, AI persona and per-product KYC fields, governed in one place.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>A new insurer launches through settings instead of a custom project, and stays on the shared platform as it improves.</dd></div>
         </dl>
         <div class="metric"><div><b>−50%</b><span>tenant set-up time</span></div><div><b>−40%</b><span>manual processing</span></div></div>
       </article>
@@ -288,18 +393,20 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
         <dl>
           <div><dt>Problem</dt><dd>An external test found 5 critical, 12 high, 4 medium and 2 low findings across UAT and production APIs.</dd></div>
           <div><dt>What I did</dt><dd>Mapped root causes and dependencies to show which high and medium findings would close with the critical fixes, then negotiated engineering timelines for executive review.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>Customer and payment data behind the portal APIs is secured, with every critical risk closed within a day.</dd></div>
         </dl>
         <div class="metric"><div><b>24 h</b><span>to close all criticals</span></div><div><b>23 / 23</b><span>findings remediated</span></div></div>
       </article>
 
       <article class="case">
-        <div class="case-top"><span class="area">AI · Governance</span><span class="status s-pilot">UAT pilot</span></div>
-        <h3>AI features with guardrails first</h3>
+        <div class="case-top"><span class="area">AI · Copilots</span><span class="status s-build">In development</span></div>
+        <h3>A copilot for every participant, plus Studio</h3>
         <dl>
-          <div><dt>Problem</dt><dd>Ten AI features were planned across four regulated markets, and none had agreed accuracy, uptime or drift standards.</dd></div>
-          <div><dt>What I did</dt><dd>Defined the governance framework, then took natural-language quoting, OCR/KYC document scanning, cover recommendations and a RAG-based policy FAQ into a UAT pilot. They are not yet in production.</dd></div>
+          <div><dt>Problem</dt><dd>Agents, clients, insurer staff and admins do very different work, so one generic chatbot would help none of them. AI in regulated insurance also needed standards before it reached customers.</dd></div>
+          <div><dt>What I did</dt><dd>Designed four copilots into the Evolve Portals and Studio prototypes, now in build. The agent copilot helps with quoting, renewal summaries and next best actions. The client assistant answers policy questions and handles claim notification and plain-language claim status. The staff copilot ranks and summarises referral and claims queues. The Studio copilot helps insurer admins set up products, workflows and reports in plain language. I set the governance framework first and took four AI features into a UAT pilot.</dd></div>
+          <div class="value"><dt class="v">Insurer value</dt><dd>Each participant gets help suited to their work: faster quotes for agents, fewer claim-status calls from clients, shorter queues for staff and quicker set-up for admins. The copilots assist and never decide. Rating, underwriting and claims outcomes stay with the core systems and authorised people, and every feature must meet agreed accuracy, uptime and drift standards before it reaches customers.</dd></div>
         </dl>
-        <div class="metric"><div><b>10</b><span>features governed</span></div><div><b>4</b><span>in UAT pilot</span></div><div><b>99.5%</b><span>uptime target</span></div></div>
+        <div class="metric"><div><b>4</b><span>copilots designed</span></div><div><b>10</b><span>AI features governed</span></div><div><b>4</b><span>in UAT pilot</span></div></div>
       </article>
     </div>
   </section>
