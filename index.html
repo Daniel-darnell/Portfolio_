@@ -73,7 +73,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (prefers-reduced-motion: reduce){.pulse{display:none}}
 
 /* ledger stats */
-.ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.ledger{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface)}
 .ledger div{padding:20px 22px;border-left:1px solid var(--line);min-width:0}
 .ledger div:first-child{border-left:0}
 .ledger b{display:block;font-family:var(--mono);font-weight:500;font-size:30px;font-variant-numeric:tabular-nums;color:var(--fg)}
@@ -180,8 +180,8 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
   .step:nth-child(-n+2){border-top:0}
   .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ledger{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ledger div:nth-child(3){border-left:0}
-  .ledger div:nth-child(n+3){border-top:1px solid var(--line)}
+  .ledger div:first-child{grid-column:1/-1} .ledger div:nth-child(2n){border-left:0}
+  .ledger div:nth-child(n+2){border-top:1px solid var(--line)}
   section{padding-block:56px}
 }
 @media (max-width:520px){
@@ -251,7 +251,7 @@ footer{padding-block:36px 48px;color:var(--muted);font-size:14px;display:flex;ju
   </div>
 
   <div class="ledger" aria-label="Key figures">
-    <div><b>10K+</b><span>payments a month on live portals</span></div>
+    <div><b>100K+</b><span>policies issued on live portals</span></div> <div><b>10K+</b><span>payments a month on live portals</span></div>
     <div><b>96%</b><span>payment success rate</span></div>
     <div><b>6</b><span>payment rails integrated</span></div>
     <div><b>4</b><span>regulated markets</span></div>
